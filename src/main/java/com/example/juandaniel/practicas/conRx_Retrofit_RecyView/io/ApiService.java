@@ -1,6 +1,6 @@
 package com.example.juandaniel.practicas.conRx_Retrofit_RecyView.io;
 
-import com.example.juandaniel.practicas.conRx_Retrofit_RecyView.domain.Category;
+import com.example.juandaniel.practicas.conRx_Retrofit_RecyView.domain.CategoryResponse;
 
 import java.util.ArrayList;
 
@@ -14,6 +14,6 @@ import retrofit2.http.GET;
 public interface ApiService {
 
     @GET("/php/getCategories.php")
-    Observable<ArrayList<Category>> getCategories();
+    Observable<ArrayList<CategoryResponse>> getCategories();
 
 }

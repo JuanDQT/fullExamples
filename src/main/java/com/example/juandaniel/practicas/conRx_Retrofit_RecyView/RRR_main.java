@@ -8,7 +8,7 @@ import android.util.Log;
 
 import com.example.juandaniel.practicas.R;
 import com.example.juandaniel.practicas.conRx_Retrofit_RecyView.adapters.CategoryAdapter;
-import com.example.juandaniel.practicas.conRx_Retrofit_RecyView.domain.Category;
+import com.example.juandaniel.practicas.conRx_Retrofit_RecyView.domain.CategoryResponse;
 import com.example.juandaniel.practicas.conRx_Retrofit_RecyView.io.ApiAdapter;
 import com.example.juandaniel.practicas.conRx_Retrofit_RecyView.io.ApiService;
 
@@ -41,27 +41,27 @@ public class RRR_main extends AppCompatActivity {
 
     }
 
+
     public void loadCategories(ApiService apiService) {
 
-
-        apiService.getCategories().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<ArrayList<Category>>() {
+        apiService.getCategories().subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Observer<ArrayList<CategoryResponse>>() {
             @Override
             public void onSubscribe(Disposable d) {
 
             }
 
             @Override
-            public void onNext(ArrayList<Category> value) {
+            public void onNext(ArrayList<CategoryResponse> value) {
                 Log.d("STATUS", "OK");
-                Log.d("STATUS", value.toString());
+
+                Log.d("VALUE: ", value.toString());
+
                 categoryAdapter.addAll(value);
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.e("STATUS", "ERROR");
-                Log.e("STATUS", e.getMessage());
-
+                Log.e("ERROR", e.getMessage());
             }
 
             @Override
@@ -69,12 +69,11 @@ public class RRR_main extends AppCompatActivity {
 
             }
         });
-
-
+        
     }
 
     public void setUpList() {
-        recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         recyclerView.setAdapter(categoryAdapter);
 
     }

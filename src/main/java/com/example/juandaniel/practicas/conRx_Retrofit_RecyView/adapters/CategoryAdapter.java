@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.juandaniel.practicas.R;
-import com.example.juandaniel.practicas.conRx_Retrofit_RecyView.domain.Category;
+import com.example.juandaniel.practicas.conRx_Retrofit_RecyView.domain.CategoryResponse;
 
 import java.util.ArrayList;
 
@@ -20,7 +20,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     private Activity activity;
     private int label = R.layout.category_label;
-    private ArrayList<Category> categories;
+    private ArrayList<CategoryResponse> categories;
 
     public CategoryAdapter(Activity activity) {
         this.activity = activity;
@@ -36,7 +36,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(CategoryAdapterViewHolder holder, int position) {
         holder.tvName.setText(categories.get(position).getNameCategory());
-        //holder.tvDescription.setText(categories.get(position).getSubArray().get(0).getNameSubCategory());
+        //holder.tvDescription.setText(categories.get(position).getSubArray().get(0).getNameSubCategory() + "");
     }
 
     @Override
@@ -57,7 +57,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         }
     }
 
-    public void addAll(ArrayList<Category> categories) {
+    public void addAll(ArrayList<CategoryResponse> categories) {
 
         this.categories.addAll(categories);
         this.notifyDataSetChanged();
